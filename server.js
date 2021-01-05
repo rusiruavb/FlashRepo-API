@@ -25,7 +25,9 @@ mongoose.connection.once('open', () => {
 })
 
 // use defined routes
-app.get("/", (req, res) => {res.send("API Running...")})
+app.get("/", (req, res) => {
+    res.send("Flashcard API Running...<br/><a href='#'>Read the Documentation</a>")
+})
 app.use("/user", userRoutes);
 
 app.listen(PORT, () => {
