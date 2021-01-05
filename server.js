@@ -26,7 +26,7 @@ mongoose.connection.once('open', () => {
 
 // use defined routes
 app.get("/", (req, res) => {
-    res.send("Flashcard API Running...<br/><a href='#'>Read the Documentation</a>")
+    res.send("Flashcard API Running...<br/><a href='https://github.com/rusiruavb/FlashRepo.git'>Read the Documentation</a>")
 })
 app.use("/user", userRoutes);
 
