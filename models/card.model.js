@@ -31,8 +31,8 @@ const CardSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    date: {
-        type: new Date(),
+    createDate: {
+        type: Date,
         required: false
     },
     status: {

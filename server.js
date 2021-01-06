@@ -6,6 +6,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const userRoutes = require("./routes/user.route");
+const cardRouters = require("./routes/card.route");
 const PORT = process.env.PORT || 8102;
 
 app.use(cors());
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
     res.send("Flashcard API Running...<br/><a href='https://github.com/rusiruavb/FlashRepo.git'>Read the Documentation</a>")
 })
 app.use("/user", userRoutes);
+app.use("/card", cardRouters);
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port number ${PORT}`);
