@@ -35,6 +35,7 @@
             to the plain text. So, users' passwords are securely store in the database.
         </p>
         <h2 class="display-6 pt-lg-2">API End Points</h2>
+        <p class="text-nowrap bd-highlight"><b>Before using any end points you have to call this url</b> - <code>https://apiflashcard.herokuapp.com/</code></p>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -47,6 +48,7 @@
                      aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <h5>Create New User Account</h5>
+                        <code>https://apiflashcard.herokuapp.com/user/createacc</code>
                         <br>
                         After enter this URL, you have to give the data set like this. When you give dataset make sure
                         to give the dataset in <b>JSON</b> format. And also make sure to give the exactly I mention in
@@ -63,7 +65,7 @@
                             }
                         </code>
                         <br><br>
-                        <table class="table table-bordered table-hover" style="width: 50%">
+                        <table class="table table-bordered table-hover w-sm-100">
                             <thead>
                             <tr>
                                 <th scope="col">JSON Key</th>
@@ -100,10 +102,40 @@
                             <tr>
                                 <th><code>"profilePicture"</code></th>
                                 <td>String</td>
-                                <td>Link of the profile picture.</td>
+                                <td>Link of the profile picture.<br>
+                                    <small class="text-muted">
+                                    Don't upload the profile picture. Paste the
+                                profile image link which is available online</small></td>
                             </tr>
                             </tbody>
                         </table>
+                        <h4>Response</h4>
+                        <code>
+                            {<br>
+                            &nbsp;&nbsp;&nbsp;"status": "New User Added",<br>
+                            &nbsp;&nbsp;&nbsp;"user": {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "5ff6034bf3426626e86ba983",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "James Wiliam",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email": "james@gmail.com",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password": "$2a$08$4jyAuVpUJHxDsy2tptb4K.8XOpIWMqe9g8/6ZFLiV52Emlrxp08vy",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"profilePicture": "https://sample.com",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"school": "Oxford University",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Software Engineering",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tokens": [<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "5ff6034bf3426626e86ba984",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 1<br>
+                            &nbsp;&nbsp;&nbsp;},<br>
+                            &nbsp;&nbsp;&nbsp;"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"<br>
+                            }
+                        </code>
+                        <br><br>
+                        You can use this <code>token</code> to get service from other end points.
                     </div>
                 </div>
             </div>
@@ -111,14 +143,46 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Create New User Account
+                            data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <div class="font-monospace text-dark" >/user/getacc</div>
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse show"
                      aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-
+                        <h5>Get User Profile</h5>
+                        <code>https://apiflashcard.herokuapp.com/user/getacc</code>
+                        <br>
+                        In this end point you don't need to give any dataset. But you have to give the authentication token as the <b>Header</b>
+                        <br><br>
+                        <code>
+                            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"
+                        </code>
+                        <br><br>
+                        <h4>Response</h4>
+                        <code>
+                            {<br>
+                            &nbsp;&nbsp;&nbsp;"status": "User Fetched",<br>
+                            &nbsp;&nbsp;&nbsp;"user": {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "5ff6034bf3426626e86ba983",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "James Wiliam",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email": "james@gmail.com",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password": "$2a$08$4jyAuVpUJHxDsy2tptb4K.8XOpIWMqe9g8/6ZFLiV52Emlrxp08vy",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"profilePicture": "https://sample.com",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"school": "Oxford University",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Software Engineering",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tokens": [<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "5ff6034bf3426626e86ba984",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 1<br>
+                            &nbsp;&nbsp;&nbsp;},<br>
+                            }
+                        </code>
                     </div>
                 </div>
             </div>
