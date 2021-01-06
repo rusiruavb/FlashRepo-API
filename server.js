@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const fs = require("fs");
 require("dotenv").config();
 
 const userRoutes = require("./routes/user.route");
@@ -27,7 +28,8 @@ mongoose.connection.once('open', () => {
 
 // use defined routes
 app.get("/", (req, res) => {
-    res.send("Flashcard API Running...<br/><a href='https://github.com/rusiruavb/FlashRepo.git'>Read the Documentation</a>")
+    let html = fs.readFileSync("./views/document.html", "utf8");
+    res.send(html)
 })
 app.use("/user", userRoutes);
 app.use("/card", cardRouters);
