@@ -9,8 +9,31 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <title>Documentation</title>
     <style>
-        .container {
-            max-width: 80%;
+        /* Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) {}
+
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) {}
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {
+            .container {
+                width: 1000px;
+            }
+        }
+
+        /* X-Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            .container {
+                width: 1000px;
+            }
+        }
+
+        /* XX-Large devices (larger desktops, 1400px and up) */
+        @media (min-width: 1400px) {
+            .container {
+                width: 850px;
+            }
         }
     </style>
 </head>
@@ -44,21 +67,100 @@
             Before using any end points you have to call this url - <code>https://apiflashcard.herokuapp.com/</code><br>
             You can use <a href="https://www.postman.com/downloads/"><b>Postman</b></a> software to test this API in your computer.
         </p>
-        <div>
-            <code>/user/createacc</code> - This route will create new user in the system. When you calling this route you have to
-            give the dataset like this. And this route will return newly created user and the authentication token of that user.
-            <br>
-            <code>
-                {<br>
-                &nbsp;&nbsp;&nbsp;"name": "James Wiliam",<br>
-                &nbsp;&nbsp;&nbsp;"email": "james@gmail.com",<br>
-                &nbsp;&nbsp;&nbsp;"password": "james123",<br>
-                &nbsp;&nbsp;&nbsp;"school": "Oxford University",<br>
-                &nbsp;&nbsp;&nbsp;"field": "Software Engineering",<br>
-                &nbsp;&nbsp;&nbsp;"profilePicture": "https://sample.com"<br>
-                }
-            </code>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <code>/user/createacc</code>
+                <br>
+                This route will create new user in the system. When you calling this route you have to
+                give the dataset like this. And this route will return newly created user and the authentication token of that user.
+            </div>
+            <div class="col-lg-6">
+                Data Set
+                <br>
+                <code style="color: chocolate">
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;"name": "James Wiliam",<br>
+                    &nbsp;&nbsp;&nbsp;"email": "james@gmail.com",<br>
+                    &nbsp;&nbsp;&nbsp;"password": "james123",<br>
+                    &nbsp;&nbsp;&nbsp;"school": "Oxford University",<br>
+                    &nbsp;&nbsp;&nbsp;"field": "Software Engineering",<br>
+                    &nbsp;&nbsp;&nbsp;"profilePicture": "https://sample.com"<br>
+                    }
+                </code>
+            </div>
         </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <code>/user/getacc</code>
+                <br>
+                By calling this route you can get the user profile details. But only user can
+                receive his data. Any other person cannot get other users data because to get user details from this route
+                you have to use authentication token.
+                <br>
+                <i>For testing purpose you can get this token when you create a new user.</i>
+            </div>
+            <div class="col-lg-6">
+                Authentication Token
+                <br>
+                <code style="color: chocolate">
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"
+                </code>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <code>/user/updateacc</code>
+                <br>
+                By using this route you can update an existing user in the system. To get the result from this route you have to
+                give both authentication token and dataset that you want to update.
+                <br>
+                <i>These tokens are only testing purpose.
+                In a real situation, when user need to update their details, only the person who has access to update can make
+                modification.</i>
+            </div>
+            <div class="col-lg-6">
+                Data Set
+                <br>
+                <code style="color: chocolate">
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;"name": "James Wiliam",<br>
+                    &nbsp;&nbsp;&nbsp;"email": "james@gmail.com",<br>
+                    &nbsp;&nbsp;&nbsp;"password": "james123",<br>
+                    &nbsp;&nbsp;&nbsp;"school": "Oxford University",<br>
+                    &nbsp;&nbsp;&nbsp;"field": "Information System Engineering",<br>
+                    &nbsp;&nbsp;&nbsp;"profilePicture": "https://sample.com"<br>
+                    }
+                </code>
+                <br>
+                Authentication Token
+                <br>
+                <code style="color: chocolate">
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"
+                </code>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <code>/user/deleteacc</code>
+                <br>
+                This route will delete an existing user from the system. To use this route you have to provide the authentication
+                token in the header.
+                <br>
+                <i>For testing purpose you can get this token when you create a new user.</i>
+            </div>
+            <div class="col-lg-6">
+                Authentication Token
+                <br>
+                <code style="color: chocolate">
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"
+                </code>
+            </div>
+        </div>
+        <hr>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
