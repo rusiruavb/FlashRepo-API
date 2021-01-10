@@ -76,7 +76,10 @@
                 <code>/user/createacc</code>
                 <br>
                 This route will create new user in the system. When you calling this route you have to
-                give the dataset like this. And this route will return newly created user and the authentication token of that user.
+                give the dataset like this. And this route will return newly created user and the authentication
+                token of that user.<br>
+                <span class="badge rounded-pill bg-warning text-dark">Post</span>
+                <span class="badge rounded-pill bg-info text-dark">Public route</span>
             </div>
             <div class="col-lg-6">
                 Data Set
@@ -103,6 +106,9 @@
                 you have to use authentication token.
                 <br>
                 <i>For testing purpose you can get this token when you create a new user.</i>
+                <br>
+                <span class="badge rounded-pill bg-success">Get</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
             </div>
             <div class="col-lg-6">
                 Authentication Token
@@ -122,7 +128,9 @@
                 <br>
                 <i>These tokens are only testing purpose.
                 In a real situation, when user need to update their details, only the person who has access to update can make
-                modification.</i>
+                modification.</i><br>
+                <span class="badge rounded-pill bg-primary">Put</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
             </div>
             <div class="col-lg-6">
                 Data Set
@@ -153,7 +161,9 @@
                 This route will delete an existing user from the system. To use this route you have to provide the authentication
                 token in the header.
                 <br>
-                <i>For testing purpose you can get this token when you create a new user.</i>
+                <i>For testing purpose you can get this token when you create a new user.</i><br>
+                <span class="badge rounded-pill bg-danger">Delete</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
             </div>
             <div class="col-lg-6">
                 Authentication Token
@@ -175,6 +185,9 @@
                     For testing purpose you can use the email and password that you have to when you are creating an account.
                     In a real situation, when user need to login to the system, only the person who has access can login to the system.
                 </i>
+                <br>
+                <span class="badge rounded-pill bg-warning text-dark">Post</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
             </div>
             <div class="col-lg-6">
                 Data Set
@@ -195,7 +208,9 @@
                 This route will help you to create a path to logout from the system. But you have to provide authentication
                 token in the header.
                 <br>
-                <i>For testing purpose you can get this token when you create a new user.</i>
+                <i>For testing purpose you can get this token when you create a new user.</i><br>
+                <span class="badge rounded-pill bg-warning text-dark">Post</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
             </div>
             <div class="col-lg-6">
                 Authentication Token
@@ -215,7 +230,9 @@
                 This route will create new flash card in the system. To call this route you have to provide both flash card data set and the
                 authentication token of the user. Because creating new flash card is a private route.
                 <br>
-                <i>For testing purpose you can get this token when you create a new user.</i>
+                <i>For testing purpose you can get this token when you create a new user.</i><br>
+                <span class="badge rounded-pill bg-warning text-dark">Post</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
             </div>
             <div class="col-lg-6">
                 Data Set
@@ -246,7 +263,109 @@
                 This route will return an array of all the flash cards created by a particular user. You have to provide the authentication token of the user to get
                 all the flash cards.
                 <br>
-                <i>For testing purpose you can get this token when you create a new user.</i>
+                <i>For testing purpose you can get this token when you create a new user.</i><br>
+                <span class="badge rounded-pill bg-success">Get</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
+            </div>
+            <div class="col-lg-6">
+                Authentication Token
+                <br>
+                <code style="color: chocolate">
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"
+                </code>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <code>/card/update/:id</code>
+                <br>
+                By using this route you can update an existing card information. You should provide card ID which given by the
+                system and authentication token. You have to give card ID in the URL and token in the header.<br><br>
+                Example:
+                <code>
+                    /card/update/5ff592d888221c5bac35a29f
+                </code>
+                <br><br>
+                <i>For testing purpose you can get this token when you create a new user and also you can get the card
+                ID when you create new card.</i><br>
+                <span class="badge rounded-pill bg-primary">Put</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
+            </div>
+            <div class="col-lg-6">
+                Data Set
+                <br>
+                <code style="color: chocolate">
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;"subName": "DSA",<br>
+                    &nbsp;&nbsp;&nbsp;"lessonTopic": "Insertion Sort",<br>
+                    &nbsp;&nbsp;&nbsp;"description": "Test description - update",<br>
+                    &nbsp;&nbsp;&nbsp;"question": "What is an algorithm?",<br>
+                    &nbsp;&nbsp;&nbsp;"answer": "Test answer",<br>
+                    &nbsp;&nbsp;&nbsp;"date": "2021-01-06T10:37:12.457Z",<br>
+                    &nbsp;&nbsp;&nbsp;"status": "don't know"<br>
+                    }
+                </code>
+                <br>
+                Authentication Token
+                <br>
+                <code style="color: chocolate">
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"
+                </code>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <code>/card/status/:id</code>
+                <br>
+                This is an optional route. By using this route you can easily update the question status of the card without
+                changing other data. To get result from this route you have to provide card ID in the header dataset as
+                well as authentication token.
+                <br><br>
+                Example:
+                <code>
+                    /card/status/5ff592d888221c5bac35a29f
+                </code>
+                <br><br>
+                <i>For testing purpose you can get this token when you create a new user and also you can get the card
+                    ID when you create new card.</i><br>
+                <span class="badge rounded-pill bg-primary">Put</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
+            </div>
+            <div class="col-lg-6">
+                Data Set
+                <br>
+                <code style="color: chocolate">
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;"status": "don't know"<br>
+                    }
+                </code>
+                <br>
+                Authentication Token
+                <br>
+                <code style="color: chocolate">
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2MDM0YmYzNDI2NjI2ZTg2YmE5ODMiLCJpYXQiOjE2MDk5NTgyMTl9.ytn2r0K0ZPtKizuOaz3ILhFqX7T5QM8Le6tIOhWesNU"
+                </code>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <code>/card/delete/:id</code>
+                <br>
+                This route will delete an existing card in the system. To delete a card you have to provide card ID in the
+                URL and authentication token in header.
+                <br><br>
+                Example:
+                <code>
+                    /card/delete/5ff592d888221c5bac35a29f
+                </code>
+                <br><br>
+                <i>For testing purpose you can get this token when you create a new user and also you can get the card
+                    ID when you create new card.</i><br>
+                <span class="badge rounded-pill bg-danger">Delete</span>
+                <span class="badge rounded-pill bg-danger">Private route</span>
             </div>
             <div class="col-lg-6">
                 Authentication Token
