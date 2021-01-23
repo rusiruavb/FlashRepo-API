@@ -19,9 +19,15 @@ router.post("/createacc", async (req, res) => {
         user = {name, email, password, profilePicture, school, field };
         const newUser = new User(user);
 
-        await newUser.save();
+        const createdUser = await newUser.save();
         const token = await newUser.generateAuthToken();
-        res.status(201).send({status: "New User Added", user: newUser, token: token});
+
+        const data = {
+          createdUser,
+          token
+        }
+
+        res.status(201).json(data);
     } catch (error) {
         res.status(500).send({status: "Error with creating account", error: error.message});
     }
@@ -32,7 +38,8 @@ router.post("/createacc", async (req, res) => {
 // @access - private
 router.get("/getacc", auth, async (req, res) => {
     try {
-        res.status(201).send({status: "User Fetched", user: req.user});
+        const data = req.user;
+        res.status(201).json(data);
     } catch (error) {
         res.status(500).send({status: "Error with getting user data", error: error.message});
     }
@@ -81,7 +88,11 @@ router.post("/login", async (req, res) => {
     try {
         const user = await User.findByCredentials(email, password);
         const token = await user.generateAuthToken();
-        res.status(200).send({status: "Login success!", user: user, token: token});
+        const sendData = {
+          user,
+          token
+        }
+        res.status(200).json(sendData);
     } catch (error) {
         res.status(500).send({status: "Error with login", error: error.message});
     }

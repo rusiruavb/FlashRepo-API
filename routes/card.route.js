@@ -20,7 +20,7 @@ router.post("/create", auth, async (req, res) => {
 
         const card = new Card(newCard);
         await card.save();
-        res.status(200).send({staus: "Flashcard Added to your list", card: card});
+        res.status(200).json(card);
     } catch (error) {
         res.status(500).send({status: "Error with saving your card", error: error.message});
     }
@@ -29,7 +29,7 @@ router.post("/create", auth, async (req, res) => {
 router.get("/get", auth, async (req, res) => {
     try {
         const cards = await Card.find({userID: req.user.id});
-        res.status(200).send({status: "Fetch cards successfully", cards: cards});
+        res.status(200).json(cards)
     } catch (error) {
         res.status(500).send({status: "Error with get all the cards", error: error.message});
     }
